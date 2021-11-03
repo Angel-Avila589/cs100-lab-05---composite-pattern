@@ -4,7 +4,9 @@
 #include "gtest/gtest.h"
 
 #include "op.hpp"
+#include "mult.hpp"
 
+//Below are the tests for the Op class
 TEST(OpTest, OpEvaluateNonZero) {
     Op* test = new Op(8);
     EXPECT_EQ(test->evaluate(), 8);
@@ -55,6 +57,60 @@ TEST(OpTest, OpStringifyNegativeDec){
     EXPECT_EQ(test->stringify(), "-3.444419");
 }
 
+//Below are the tests for the Mult class
+TEST(MultTest, MultEvaluateNonZero){
+    Base* num1 = new Op(5);
+    Base* num2 = new Op(3);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->evaluate(), 15);
+}
 
+TEST(MultTest, MultStringifyNonZero){
+    Base* num1 = new Op(7);
+    Base* num2 = new Op(4);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->stringify(), "(7.000000 * 4.000000)");
+}
 
+TEST(MultTest, MultEvaluateZero){
+    Base* num1 = new Op(0);
+    Base* num2 = new Op(0);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->evaluate(), 0);
+}
+
+TEST(MultTest, MultStringifyZero){
+    Base* num1 = new Op(0);
+    Base* num2 = new Op(0);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->stringify(), "(0.000000 * 0.000000)");
+}
+
+TEST(MultTest, MultEvaluateNegative){
+    Base* num1 = new Op(-5);
+    Base* num2 = new Op(2);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->evaluate(), -10);
+}
+
+TEST(MultTest, MultStringifyNegative){
+    Base* num1 = new Op(-8);
+    Base* num2 = new Op(15);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->stringify(), "(-8.000000 * 15.000000)");
+}
+
+TEST(MultTest, MultEvaluateNegatives){
+    Base* num1 = new Op(-2);
+    Base* num2 = new Op(-9);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->evaluate(), 18);
+}
+
+TEST(MultTest, MultStringifyNegatives){
+    Base* num1 = new Op(-6);
+    Base* num2 = new Op(-3);
+    Base* num3 = new Mult(num1, num2);
+    EXPECT_EQ(num3->stringify(), "(-6.000000 * -3.000000)");
+}
 #endif //__OP_TEST_HPP__
