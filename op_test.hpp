@@ -9,6 +9,7 @@
 #include "rand.hpp"
 #include "pow.hpp"
 #include "div.hpp"
+#include "add.hpp"
 
 //Below are the tests for the Op class
 TEST(OpTest, OpEvaluateNonZero) {
