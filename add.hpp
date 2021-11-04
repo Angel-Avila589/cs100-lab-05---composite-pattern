@@ -17,7 +17,6 @@ class Add : public Base{
             add_val2 = val2;
         }
        ~Add(){
-          //   cout << "destructor called" << endl;
             delete this->add_val1;
             delete this->add_val2;
         };

@@ -126,7 +126,7 @@ TEST(AddTest, DecAddPosPos){
     Base* test = new Add(first, second);
     EXPECT_EQ(test->evaluate(), 19.8);
     EXPECT_EQ(test->stringify(), "(8.000000 + 11.800000)");
-  
+} 
 //Below are the tests for the Mult class
 TEST(MultTest, MultEvaluateNonZero){
     Base* num1 = new Op(5);
